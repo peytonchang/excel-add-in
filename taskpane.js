@@ -12,7 +12,7 @@ Office.onReady((info) => {
   }
 });
 
-export async function writeData() {
+async function writeData() {
 
   Excel.run((context) => {
     const ws = context.workbook.worksheets.getActiveWorksheet()
@@ -25,7 +25,7 @@ export async function writeData() {
   console.log("hello world");
 }
 
-export async function readData() {
+async function readData() {
   Excel.run((context) => {
       const ws = context.workbook.worksheets.getActiveWorksheet();
       const range = ws.getRange("A1:B3");
