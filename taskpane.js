@@ -7,42 +7,10 @@
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
-    document.getElementById("btn1").addEventListener("click", writeData);
-    document.getElementById("btn2").addEventListener("click", readData);
+
   }
 });
 
-async function writeData() {
-
-  Excel.run((context) => {
-    const ws = context.workbook.worksheets.getActiveWorksheet()
-    // const range = ws.getRange("A1:A3")
-    // range.values = [[1],[2],[3]]
-    const range = ws.getRange("A1:B3")
-    range.values = [[[1],["a"]],[[1],["a"]],[[1],["a"]]]
-    return context.sync()
-  })
-  console.log("hello world");
-}
-
-async function readData() {
-  Excel.run((context) => {
-      const ws = context.workbook.worksheets.getActiveWorksheet();
-      const range = ws.getRange("A1:B3");
-      range.load('values');
-
-      return context.sync().then(function() {
-          // Convert the 2D array to a string suitable for display in the textarea
-          const output = range.values.map(row => row.join(", ")).join("\n");
-          document.getElementById("outputArea").value = output;
-          document.getElementById("messageArea").innerText = "Data loaded successfully.";
-      });
-  }).catch(function(error) {
-      console.error("Error:", error);
-      // Display error messages in the 'messageArea' div
-      document.getElementById("messageArea").innerText = "Error: " + error.message;
-  });
-}
 
 async function jsonToSheet(jsonData) {
   await Excel.run(async (context) => {
