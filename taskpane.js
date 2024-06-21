@@ -44,7 +44,7 @@ async function jsonToSheet(jsonData) {
   });
 }
 
-document.getElementById("capture_btn").addEventListener("click", function() {
+document.getElementById("capture-btn").addEventListener("click", function() {
     captureData();
 });
 
