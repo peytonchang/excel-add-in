@@ -48,7 +48,7 @@ document.getElementById("capture-btn").addEventListener("click", function() {
     captureData();
 });
 
-document.getElementById("paste-button").addEventListener("click", function() {
+document.getElementById("paste-btn").addEventListener("click", function() {
     pasteData();
 })
 
