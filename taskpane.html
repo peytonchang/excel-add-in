@@ -1,6 +1,3 @@
-<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
-<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
-
 <!DOCTYPE html>
 <html>
 
@@ -48,9 +45,14 @@
 
     <!-- New Textbox and Capture Button -->
     <input type="text" id="input-box" placeholder="Enter text here" style="width: 100%; margin-top: 10px;">
-    <button id="capture-btn" class="ms-Button ms-Button--primary" style="margin-top: 10px;">
-        <span class="ms-Button-label">Capture</span>
-    </button>
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button id="capture-btn" class="ms-Button ms-Button--primary" style="flex: 1;">
+            <span class="ms-Button-label">Capture</span>
+        </button>
+        <button id="paste-btn" class="ms-Button ms-Button--primary" style="flex: 1;">
+            <span class="ms-Button-label">Paste</span>
+        </button>
+    </div>
 
     <!-- Link to your JavaScript file -->
     <script src="taskpane.js"></script>

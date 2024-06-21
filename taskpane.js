@@ -48,6 +48,10 @@ document.getElementById("capture-btn").addEventListener("click", function() {
     captureData();
 });
 
+document.getElementById("paste-button").addEventListener("click", function() {
+    pasteData();
+})
+
 document.getElementById("btn3").addEventListener("click", function() {
   const jsonData = document.getElementById("jsonInput").value;
   try {
@@ -217,6 +221,19 @@ async function captureData() {
 
             const cellValue = range.values[0][0];
             document.getElementById("input-box").value = cellValue;
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function pasteData() {
+    try {
+        await Excel.run(async (context) => {
+            const range = context.workbook.getActiveCell();
+            const textBoxValue = document.getElementById("input-box").value;
+            range.values = [[textBoxValue]];
+            await context.sync();
         });
     } catch (error) {
         console.error(error);
