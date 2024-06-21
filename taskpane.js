@@ -44,6 +44,10 @@ async function jsonToSheet(jsonData) {
   });
 }
 
+document.getElementById("capture_btn").addEventListener("click", function() {
+    captureData();
+});
+
 document.getElementById("btn3").addEventListener("click", function() {
   const jsonData = document.getElementById("jsonInput").value;
   try {
@@ -202,4 +206,19 @@ function generateInsertSQL(tableDef, tableName, headers, rows) {
   sqlStatements += valueStatements.join(",\n") + ";";
 
   return sqlStatements;
+}
+
+async function captureData() {
+    try {
+        await Excel.run(async (context) => {
+            const range = context.workbook.getActiveCell();
+            range.load("values");
+            await context.sync();
+
+            const cellValue = range.values[0][0];
+            document.getElementById("input-box").value = cellValue;
+        });
+    } catch (error) {
+        console.error(error);
+    }
 }
